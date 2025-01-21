@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 17:16:28 by hmateque          #+#    #+#             */
-/*   Updated: 2025/01/20 10:01:19 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:02:01 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int peso_valido(const char* tipo, float peso)
 }
 
 // Função principal para validar produto
-void validarProduto(Fila* f, char tipo[])
+void validarProduto(Fila* f, char tipo[], int* descartados_PA, int* descartados_PB)
 {
     // Verificar se a fila é válida
     if (!f || !f->inicio) {
@@ -70,6 +70,12 @@ void validarProduto(Fila* f, char tipo[])
             stats.prejuizo_total += prejuizo;
             stats.total_removidos++;
             stats.total_validados--;
+            
+            // Na função validarProduto, quando um produto é removido:
+            if (strcmp(atual->tipo, "PA") == 0)
+                (descartados_PA)++;
+            else
+                (descartados_PB)++;
 
             printf("\033[31mRemovendo pacote inválido: Tipo %s, Peso %.2f (Prejuízo: KZ %.2f)\033[0m\n", 
                    atual->tipo, atual->peso, prejuizo);

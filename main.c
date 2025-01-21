@@ -6,7 +6,7 @@
 /*   By: hmateque <hmateque@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 16:20:01 by hmateque          #+#    #+#             */
-/*   Updated: 2025/01/20 11:28:40 by hmateque         ###   ########.fr       */
+/*   Updated: 2025/01/21 10:02:41 by hmateque         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 
 // Função principal refatorada
-int main(void) {
+int main(void)
+{
     // Criação das filas e máquinas
     Fila *fila_enchimento_PA = criarFila();
     Fila *fila_enchimento_PB = criarFila();
@@ -31,6 +32,9 @@ int main(void) {
     GerenciadorPilhas* gerenciador_PA = criar_gerenciador_pilhas("PA");
     GerenciadorPilhas* gerenciador_PB = criar_gerenciador_pilhas("PB");
 
+    int descartados_PA = 0;
+    int descartados_PB = 0;
+    
     int opcao;
     do {
         print_menu();
@@ -54,7 +58,7 @@ int main(void) {
                                    fila_embalamento_PA, fila_embalamento_PB);
                 break;
             case 3:
-                processar_validacao_produtos(fila_embalamento_PA, fila_embalamento_PB);
+                processar_validacao_produtos(fila_embalamento_PA, fila_embalamento_PB, &descartados_PA, &descartados_PB);
                 break;
             case 4:
                 processar_encaminhamento(fila_embalamento_PA, fila_embalamento_PB,
@@ -70,6 +74,16 @@ int main(void) {
                 maquina_enchimento_PA, maquina_enchimento_PB,
                 maquina_embalamento_PA, maquina_embalamento_PB,
                 gerenciador_PA, gerenciador_PB);
+                break;
+            case 7:
+                processar_termino_simulacao(
+                    &fila_enchimento_PA, &fila_enchimento_PB,
+                    &fila_embalamento_PA, &fila_embalamento_PB,
+                    &maquina_enchimento_PA, &maquina_enchimento_PB,
+                    &maquina_embalamento_PA, &maquina_embalamento_PB,
+                    &gerenciador_PA, &gerenciador_PB,
+                    &descartados_PA, &descartados_PB
+                );
                 break;
             case 8:
                 printf("\033[34mSaindo do programa...\033[0m\n");
