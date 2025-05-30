@@ -1,38 +1,23 @@
-# Simulador: Fábrica de sumo
+# Simulator: Juice Factory
 ![Gemini_Generated_Image_wiotblwiotblwiot](https://github.com/user-attachments/assets/0299f9b2-04ee-416b-8e23-8779c2ade0f6)
 
-Uma fábrica de enchimento de sumos precisa de comprar novas máquinas para
-a sua produção. Antes da compra, o concelho de administradores decidiu
-mandar desenvolver uma simulação para aferir o nível da produção. A simulação
-consiste no seguinte:
-
-• A fábrica enche 2 tamanhos diferentes de pacotes de sumo. O de 200 ml
-(PA) e o de 1 L (PB). Existem 2 filas para cada pacote, representando cada
-uma das fases do processo. A primeira fila é do enchimento e a segunda
-do embalamento. Cada fila está associada a uma máquina;
+A juice filling factory needs to purchase new machines for its production. 
+Before the purchase, the board of directors decided to commission the development of a simulation to assess the production level. The simulation consists of the following:
 
 
-• Uma máquina de produção(enchimento, embalamento e empilhamento)
-deverá ser representada por um TAD que possui o nome, tipo de
-máquina, tempo de processamento, a quantidade de unidades
-processadas num dia de produção, a fila de produtos a serem
-processados e outros atributos que sejam necessários;
+• The factory fills two different sizes of juice packages: 200 ml (PA) and 1 L (PB). There are two queues for each package, representing each phase of the process. The first queue is for filling, and the second is for packaging. Each queue is associated with a machine;
 
 
-• Os pacotes são inseridos na fila inicial (uma fila para cada tipo de pacote);
+• A production machine (filling, packaging, and stacking) should be represented by an ADT (Abstract Data Type) that contains the name, type of machine, processing time, the number of units processed in a production day, the queue of products to be processed, and any other necessary attributes;
 
 
-• Os pacotes do tipo PA (200 ml) saem da fila e entram para a máquina de
-enchimento. Depois do enchimento, os pacotes seguem em fila para a
-máquina de embalamento num conjunto de 6. Enquanto não houver 6
-pacotes na máquina, não é possível fazer o embalamento. Depois de sair
-da máquina, já agrupados em 6 as embalagens são empilhadas. A
-máquina empilha até 4 caixas de 6 cada;
+• Packages are inserted into the initial queue (one queue for each package type);
 
-• Os pacotes do tipo PB (1 L) seguem o mesmo processo do PA, com a
-diferença de que serão embalados em grupos de 4 e empilhadas até 3
-caixas;
 
-• Cada pacote tem características próprias para que seja considerado em
-condições para ser embalado. Caso um pacote esteja fora do padrão (tipo
-ou peso errado) é descartado da fila e não entra na
+• PA packages (200 ml) leave the queue and enter the filling machine. After filling, the packages proceed in a queue to the packaging machine in sets of 6. If there are not yet 6 packages in the machine, packaging cannot occur. After leaving the machine, already grouped in 6, the packages are stacked. The stacking machine stacks up to 4 boxes of 6 packages each;
+
+
+• PB packages (1 L) follow the same process as PA, with the difference that they are packaged in groups of 4 and stacked up to 3 boxes;
+
+
+• Each package has its own characteristics that determine whether it is suitable for packaging. If a package is out of standard (e.g., incorrect type or weight), it is discarded from the queue and not included in the process.
